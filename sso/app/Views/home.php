@@ -6,6 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<?= base_url('vendor/almasaeed2010/adminlte/dist/css/adminlte.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('vendor/almasaeed2010/adminlte/plugins/fontawesome-free/css/all.min.css') ?>">
+  <style>
+    .app-btn {
+      width: 160px;
+      height: 120px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+
 </head>
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
@@ -36,20 +47,27 @@
             <h1>Welcome to the Enterprise SSO</h1>
             <?php if (session()->has('user')): ?>
               <p>You are logged in as <?= esc(session('user.email')) ?>.</p>
+
+              <div class="alert alert-info mt-3" role="alert">
+                Welcome! Select an application below to continue.
+              </div>
               <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-3 text-center mb-3">
-                  <a href="#" class="btn btn-app bg-primary">
-                    <i class="fas fa-coins"></i> SIMKEU
+                  <a href="#" class="btn btn-app app-btn bg-primary">
+                    <i class="fas fa-coins fa-2x mb-2"></i>
+                    SIMKEU
                   </a>
                 </div>
                 <div class="col-sm-4 col-md-3 text-center mb-3">
-                  <a href="#" class="btn btn-app bg-secondary">
-                    <i class="fas fa-envelope"></i> Sistem Informasi Persuratan
+                  <a href="#" class="btn btn-app app-btn bg-secondary">
+                    <i class="fas fa-envelope fa-2x mb-2"></i>
+                    Sistem Informasi Persuratan
                   </a>
                 </div>
                 <div class="col-sm-4 col-md-3 text-center mb-3">
-                  <a href="#" class="btn btn-app bg-success">
-                    <i class="fas fa-id-badge"></i> Sistem Informasi Kepegawaian
+                  <a href="#" class="btn btn-app app-btn bg-success">
+                    <i class="fas fa-id-badge fa-2x mb-2"></i>
+                    Sistem Informasi Kepegawaian
                   </a>
                 </div>
               </div>
