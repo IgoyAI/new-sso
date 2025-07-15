@@ -4,6 +4,8 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use Google\Client as GoogleClient;
 use Google\Service\Oauth2 as GoogleServiceOauth2;
+use App\Libraries\AllowedUsers;
+
 
 class Auth extends Controller
 {
@@ -20,14 +22,22 @@ class Auth extends Controller
         if ($this->request->getGet('code')) {
             $token = $client->fetchAccessTokenWithAuthCode($this->request->getGet('code'));
             if (!isset($token['error'])) {
-                session()->set('access_token', $token);
                 $service = new GoogleServiceOauth2($client);
                 $userinfo = $service->userinfo->get();
+                $allowed = new AllowedUsers();
+                $record = $allowed->findByEmail($userinfo->email);
+                if (!$record) {
+                    return view('access_denied');
+                }
+                session()->set('access_token', $token);
                 session()->set('user', [
                     'email' => $userinfo->email,
                     'name'  => $userinfo->name,
                     'picture' => $userinfo->picture,
                 ]);
+                session()->set('user_apps', $record['apps']);
+                session()->set('is_admin', !empty($record['is_admin']));
+
                 return redirect()->to('/');
             }
         }

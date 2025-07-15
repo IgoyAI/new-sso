@@ -16,7 +16,6 @@
       justify-content: center;
     }
   </style>
-
 </head>
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
@@ -24,6 +23,10 @@
     <div class="container">
     <ul class="navbar-nav ml-auto">
       <?php if (session()->has('user')): ?>
+        <?php if (session('is_admin')): ?>
+          <li class="nav-item"><a href="<?= base_url('admin') ?>" class="nav-link">Admin</a></li>
+        <?php endif; ?>
+
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <img src="<?= session('user.picture') ?>" class="img-size-32 mr-2 img-circle" alt="User Image">
@@ -47,29 +50,20 @@
             <h1>Welcome to the Enterprise SSO</h1>
             <?php if (session()->has('user')): ?>
               <p>You are logged in as <?= esc(session('user.email')) ?>.</p>
-
               <div class="alert alert-info mt-3" role="alert">
                 Welcome! Select an application below to continue.
               </div>
               <div class="row justify-content-center">
-                <div class="col-sm-4 col-md-3 text-center mb-3">
-                  <a href="#" class="btn btn-app app-btn bg-primary">
-                    <i class="fas fa-coins fa-2x mb-2"></i>
-                    SIMKEU
-                  </a>
-                </div>
-                <div class="col-sm-4 col-md-3 text-center mb-3">
-                  <a href="#" class="btn btn-app app-btn bg-secondary">
-                    <i class="fas fa-envelope fa-2x mb-2"></i>
-                    Sistem Informasi Persuratan
-                  </a>
-                </div>
-                <div class="col-sm-4 col-md-3 text-center mb-3">
-                  <a href="#" class="btn btn-app app-btn bg-success">
-                    <i class="fas fa-id-badge fa-2x mb-2"></i>
-                    Sistem Informasi Kepegawaian
-                  </a>
-                </div>
+
+                <?php foreach ($apps as $id => $app): ?>
+                  <div class="col-sm-4 col-md-3 text-center mb-3">
+                    <a href="<?= esc($app['url']) ?>" class="btn btn-app app-btn bg-<?= esc($app['color']) ?>">
+                      <i class="<?= esc($app['icon']) ?> fa-2x mb-2"></i>
+                      <?= esc($app['label']) ?>
+                    </a>
+                  </div>
+                <?php endforeach; ?>
+
               </div>
             <?php else: ?>
               <p>Please login using your Google account.</p>

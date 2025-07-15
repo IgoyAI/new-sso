@@ -2,6 +2,7 @@
 
 This repository contains a simple Single Sign-On (SSO) server built with **CodeIgniter 4**. Authentication uses Google OAuth2 and the interface is based on the AdminLTE dashboard using the top navigation layout (no sidebar).
 
+
 ## Setup
 
 1. Install PHP 8.3 and Composer (already provided in this environment).
@@ -29,3 +30,14 @@ The default home page shows a login button. After logging in with Google, button
 - **Sistem Informasi Keuangan (SIMKEU)**
 - **Sistem Informasi Persuratan**
 - **Sistem Informasi Kepegawaian**
+
+### Admin Management
+
+Allowed accounts and their app access are stored in `sso/writable/allowed_users.json`.
+An example admin user is included:
+
+```json
+[{"email":"admin@example.com","apps":["simkeu","persuratan","kepegawaian"],"is_admin":true}]
+```
+
+After logging in with an admin account you can manage users at `/admin`.
