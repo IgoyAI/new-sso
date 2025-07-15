@@ -26,6 +26,7 @@
         <?php if (session('is_admin')): ?>
           <li class="nav-item"><a href="<?= base_url('admin') ?>" class="nav-link">Admin</a></li>
         <?php endif; ?>
+
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <img src="<?= session('user.picture') ?>" class="img-size-32 mr-2 img-circle" alt="User Image">
@@ -53,6 +54,7 @@
                 Welcome! Select an application below to continue.
               </div>
               <div class="row justify-content-center">
+
                 <?php foreach ($apps as $id => $app): ?>
                   <div class="col-sm-4 col-md-3 text-center mb-3">
                     <a href="<?= esc($app['url']) ?>" class="btn btn-app app-btn bg-<?= esc($app['color']) ?>">
@@ -61,6 +63,7 @@
                     </a>
                   </div>
                 <?php endforeach; ?>
+
               </div>
             <?php else: ?>
               <p>Please login using your Google account.</p>

@@ -1,6 +1,7 @@
 # Enterprise SSO Demo
 
-This repository contains a simple Single Sign-On (SSO) server built with **CodeIgniter 4**. Authentication uses Google OAuth2 and the interface is based on the AdminLTE dashboard.
+This repository contains a simple Single Sign-On (SSO) server built with **CodeIgniter 4**. Authentication uses Google OAuth2 and the interface is based on the AdminLTE dashboard using the top navigation layout (no sidebar).
+
 
 ## Setup
 

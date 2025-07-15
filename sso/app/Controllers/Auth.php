@@ -6,6 +6,7 @@ use Google\Client as GoogleClient;
 use Google\Service\Oauth2 as GoogleServiceOauth2;
 use App\Libraries\AllowedUsers;
 
+
 class Auth extends Controller
 {
     public function login()
@@ -36,6 +37,7 @@ class Auth extends Controller
                 ]);
                 session()->set('user_apps', $record['apps']);
                 session()->set('is_admin', !empty($record['is_admin']));
+
                 return redirect()->to('/');
             }
         }

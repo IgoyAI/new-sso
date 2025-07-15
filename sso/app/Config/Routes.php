@@ -15,3 +15,4 @@ $routes->group('admin', ['filter' => 'admin'], static function ($routes) {
     $routes->post('add', 'Admin::add');
     $routes->get('delete/(:any)', 'Admin::delete/$1');
 });
+
