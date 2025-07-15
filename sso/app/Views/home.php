@@ -37,9 +37,21 @@
             <?php if (session()->has('user')): ?>
               <p>You are logged in as <?= esc(session('user.email')) ?>.</p>
               <div class="row justify-content-center">
-                <div class="col-md-3"><a href="#" class="btn btn-primary btn-block">App 1</a></div>
-                <div class="col-md-3"><a href="#" class="btn btn-secondary btn-block">App 2</a></div>
-                <div class="col-md-3"><a href="#" class="btn btn-success btn-block">App 3</a></div>
+                <div class="col-sm-4 col-md-3 text-center mb-3">
+                  <a href="#" class="btn btn-app bg-primary">
+                    <i class="fas fa-coins"></i> SIMKEU
+                  </a>
+                </div>
+                <div class="col-sm-4 col-md-3 text-center mb-3">
+                  <a href="#" class="btn btn-app bg-secondary">
+                    <i class="fas fa-envelope"></i> Sistem Informasi Persuratan
+                  </a>
+                </div>
+                <div class="col-sm-4 col-md-3 text-center mb-3">
+                  <a href="#" class="btn btn-app bg-success">
+                    <i class="fas fa-id-badge"></i> Sistem Informasi Kepegawaian
+                  </a>
+                </div>
               </div>
             <?php else: ?>
               <p>Please login using your Google account.</p>
