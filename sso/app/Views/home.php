@@ -16,6 +16,7 @@
       justify-content: center;
     }
   </style>
+
 </head>
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
@@ -46,6 +47,7 @@
             <h1>Welcome to the Enterprise SSO</h1>
             <?php if (session()->has('user')): ?>
               <p>You are logged in as <?= esc(session('user.email')) ?>.</p>
+
               <div class="alert alert-info mt-3" role="alert">
                 Welcome! Select an application below to continue.
               </div>
