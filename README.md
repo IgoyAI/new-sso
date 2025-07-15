@@ -20,4 +20,8 @@ This repository contains a simple Single Sign-On (SSO) server built with **CodeI
    ```
    Visit `http://localhost:8080` in your browser.
 
-The default home page shows a login button. After logging in with Google, links to your apps are displayed.
+The default home page shows a login button. After logging in with Google, buttons for the example applications are displayed:
+
+- **Sistem Informasi Keuangan (SIMKEU)**
+- **Sistem Informasi Persuratan**
+- **Sistem Informasi Kepegawaian**
