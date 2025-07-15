@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="<?= base_url('vendor/almasaeed2010/adminlte/dist/css/adminlte.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('vendor/almasaeed2010/adminlte/plugins/fontawesome-free/css/all.min.css') ?>">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition layout-top-nav">
 <div class="wrapper">
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand-md navbar-white navbar-light">
+    <div class="container">
     <ul class="navbar-nav ml-auto">
       <?php if (session()->has('user')): ?>
         <li class="nav-item dropdown">
@@ -25,10 +26,11 @@
         <li class="nav-item"><a href="<?= base_url('login') ?>" class="nav-link">Login</a></li>
       <?php endif; ?>
     </ul>
+    </div>
   </nav>
-  <div class="content-wrapper p-4">
-    <section class="content">
-      <div class="container-fluid">
+  <div class="content-wrapper">
+    <div class="content p-4">
+      <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
             <h1>Welcome to the Enterprise SSO</h1>
@@ -46,7 +48,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </div>
 <script src="<?= base_url('vendor/almasaeed2010/adminlte/plugins/jquery/jquery.min.js') ?>"></script>
