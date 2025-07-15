@@ -9,12 +9,16 @@ This repository contains a simple Single Sign-On (SSO) server built with **CodeI
    ```bash
    composer install --working-dir=sso
    ```
-3. Copy `sso/env` to `sso/.env` and fill in your Google OAuth credentials:
+3. Link the vendor assets so AdminLTE's CSS and JavaScript are served:
+   ```bash
+   ln -s ../vendor sso/public/vendor
+   ```
+4. Copy `sso/env` to `sso/.env` and fill in your Google OAuth credentials:
    ```ini
    google.oauthClientId="YOUR_GOOGLE_CLIENT_ID"
    google.oauthClientSecret="YOUR_GOOGLE_CLIENT_SECRET"
    ```
-4. Run the development server:
+5. Run the development server:
    ```bash
    php sso/spark serve
    ```
