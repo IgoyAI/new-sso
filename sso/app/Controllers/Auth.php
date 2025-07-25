@@ -69,7 +69,10 @@ class Auth extends Controller
             'app'  => $appId,
             'iat'  => time(),
         ];
-        $secret = env('jwt.secret');
+        $secret = env('jwt.secret') ?: getenv('JWT_SECRET');
+        if (! is_string($secret) || $secret === '') {
+            throw new \RuntimeException('JWT secret is not configured');
+        }
         $token  = \Firebase\JWT\JWT::encode($payload, $secret, 'HS256');
 
         return $this->response->setJSON(['token' => $token]);
@@ -102,7 +105,10 @@ class Auth extends Controller
             'app'  => $appId,
             'iat'  => time(),
         ];
-        $secret = env('jwt.secret');
+        $secret = env('jwt.secret') ?: getenv('JWT_SECRET');
+        if (! is_string($secret) || $secret === '') {
+            throw new \RuntimeException('JWT secret is not configured');
+        }
         $token  = \Firebase\JWT\JWT::encode($payload, $secret, 'HS256');
 
         $target = rtrim($config->apps[$appId]['url'], '/');
