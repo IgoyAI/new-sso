@@ -23,7 +23,7 @@ This repository contains a simple Single Sign-On (SSO) server built with **CodeI
    ```bash
    php sso/spark serve
    ```
-   Visit `http://localhost:8080` in your browser.
+   Visit `http://localhost:8081` in your browser.
 
 The default home page shows a login button. After logging in with Google, buttons for the example applications are displayed:
 
