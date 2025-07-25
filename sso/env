@@ -71,3 +71,6 @@
 # Google OAuth
 google.oauthClientId="YOUR_GOOGLE_CLIENT_ID"
 google.oauthClientSecret="YOUR_GOOGLE_CLIENT_SECRET"
+
+# Secret key used for signing JWT tokens issued to applications
+jwt.secret="CHANGE_ME"

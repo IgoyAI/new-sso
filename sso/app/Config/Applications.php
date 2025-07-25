@@ -22,7 +22,7 @@ class Applications extends BaseConfig
             'label' => 'Sistem Informasi Kepegawaian',
             'icon'  => 'fas fa-id-badge',
             'color' => 'success',
-            'url'   => '#',
+            'url'   => 'http://localhost:8080/sso-login',
         ],
     ];
 }

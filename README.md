@@ -41,3 +41,34 @@ An example admin user is included:
 ```
 
 After logging in with an admin account you can manage users at `/admin`.
+
+### Integrating with SI-Kepegawaian
+
+Applications can obtain a signed JWT for the currently logged in user via
+`/token`. Pass the target application ID in the `app` query string, e.g.:
+
+```
+GET /token?app=kepegawaian
+```
+
+If the user is allowed access, a JSON response like the following will be
+returned:
+
+```json
+{"token":"<jwt-token>"}
+```
+
+The token is signed using the secret defined by `jwt.secret` in `.env`. The
+SI-Kepegawaian project can verify this token using the `firebase/php-jwt`
+library:
+
+```php
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+$data = JWT::decode($token, new Key(getenv('JWT_SECRET'), 'HS256'));
+```
+
+The decoded payload contains the user's email and name. Implement a login route
+in SI-Kepegawaian that accepts the token, verifies it, and starts a session for
+the corresponding user.
