@@ -57,7 +57,7 @@
 
                 <?php foreach ($apps as $id => $app): ?>
                   <div class="col-sm-4 col-md-3 text-center mb-3">
-                    <a href="<?= esc($app['url']) ?>" class="btn btn-app app-btn bg-<?= esc($app['color']) ?>">
+                    <a href="<?= base_url('launch/' . $id) ?>" class="btn btn-app app-btn bg-<?= esc($app['color']) ?>">
                       <i class="<?= esc($app['icon']) ?> fa-2x mb-2"></i>
                       <?= esc($app['label']) ?>
                     </a>

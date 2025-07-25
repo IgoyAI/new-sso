@@ -75,6 +75,42 @@ class Auth extends Controller
         return $this->response->setJSON(['token' => $token]);
     }
 
+    public function launch($appId = null)
+    {
+        if (! $appId) {
+            return redirect()->to('/');
+        }
+
+        if (! session()->has('user')) {
+            return redirect()->to('/login');
+        }
+
+        $allowed = new AllowedUsers();
+        $record  = $allowed->findByEmail(session('user.email'));
+        if (! $record || ! in_array($appId, $record['apps'], true)) {
+            return redirect()->to('/');
+        }
+
+        $config = new \Config\Applications();
+        if (! isset($config->apps[$appId])) {
+            return redirect()->to('/');
+        }
+
+        $payload = [
+            'sub'  => session('user.email'),
+            'name' => session('user.name'),
+            'app'  => $appId,
+            'iat'  => time(),
+        ];
+        $secret = env('jwt.secret');
+        $token  = \Firebase\JWT\JWT::encode($payload, $secret, 'HS256');
+
+        $target = rtrim($config->apps[$appId]['url'], '/');
+        $redirectUrl = $target . '?token=' . urlencode($token);
+
+        return redirect()->to($redirectUrl);
+    }
+
     private function getGoogleClient(): GoogleClient
     {
         $client = new GoogleClient();
