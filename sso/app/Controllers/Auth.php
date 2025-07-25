@@ -50,6 +50,31 @@ class Auth extends Controller
         return redirect()->to('/');
     }
 
+    public function token()
+    {
+        if (! session()->has('user')) {
+            return $this->response->setStatusCode(401)->setJSON(['error' => 'Unauthenticated']);
+        }
+
+        $appId = $this->request->getGet('app');
+        $allowed = new AllowedUsers();
+        $record  = $allowed->findByEmail(session('user.email'));
+        if (! $record || ($appId && ! in_array($appId, $record['apps'], true))) {
+            return $this->response->setStatusCode(403)->setJSON(['error' => 'Access denied']);
+        }
+
+        $payload = [
+            'sub'  => session('user.email'),
+            'name' => session('user.name'),
+            'app'  => $appId,
+            'iat'  => time(),
+        ];
+        $secret = env('jwt.secret');
+        $token  = \Firebase\JWT\JWT::encode($payload, $secret, 'HS256');
+
+        return $this->response->setJSON(['token' => $token]);
+    }
+
     private function getGoogleClient(): GoogleClient
     {
         $client = new GoogleClient();

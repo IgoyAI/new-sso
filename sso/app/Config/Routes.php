@@ -9,6 +9,7 @@ $routes->get('/', 'Home::index');
 $routes->get('login', 'Auth::login');
 $routes->get('callback', 'Auth::callback');
 $routes->get('logout', 'Auth::logout');
+$routes->get('token', 'Auth::token');
 
 $routes->group('admin', ['filter' => 'admin'], static function ($routes) {
     $routes->get('/', 'Admin::index');
