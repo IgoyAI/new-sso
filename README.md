@@ -14,10 +14,13 @@ This repository contains a simple Single Sign-On (SSO) server built with **CodeI
    ```bash
    ln -s ../vendor sso/public/vendor
    ```
-4. Copy `sso/env` to `sso/.env` and fill in your Google OAuth credentials:
+4. Copy `sso/env` to `sso/.env` and fill in your Google OAuth credentials.
+   Set `jwt.secret` to any random string that will be used to sign the issued
+   tokens:
    ```ini
    google.oauthClientId="YOUR_GOOGLE_CLIENT_ID"
    google.oauthClientSecret="YOUR_GOOGLE_CLIENT_SECRET"
+   jwt.secret="YOUR_JWT_SECRET"
    ```
 5. Run the development server:
    ```bash
