@@ -22,7 +22,9 @@ class Applications extends BaseConfig
             'label' => 'Sistem Informasi Kepegawaian',
             'icon'  => 'fas fa-id-badge',
             'color' => 'success',
-            'url'   => 'http://localhost:8080/sso-login',
+            // URL of the Kepegawaian application with its login endpoint
+            // Adjusted to run on port 8080
+            'url'   => 'http://localhost:8080/index.php/sso-login',
         ],
     ];
 }
