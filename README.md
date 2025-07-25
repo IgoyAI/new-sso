@@ -72,3 +72,14 @@ $data = JWT::decode($token, new Key(getenv('JWT_SECRET'), 'HS256'));
 The decoded payload contains the user's email and name. Implement a login route
 in SI-Kepegawaian that accepts the token, verifies it, and starts a session for
 the corresponding user.
+
+For convenience you can redirect users directly to an application using
+`/launch/<app>`. This route will generate the token and append it to the
+configured URL for that application. For example:
+
+```
+GET /launch/kepegawaian
+```
+
+will redirect to the SI-Kepegawaian login endpoint with the token passed in the
+`token` query parameter.
